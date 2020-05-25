@@ -19,4 +19,4 @@
 #     url  : 'http://10.11.0.10/resources/veg/fonts/MyriadPro/MyriadPro-Black.otf'  # Set the URL to the font. 
 #
 fonts_repository:
-  - { name: 'MyriadPRO-BLACK (OpenType)', file: 'MyriadPro-Black.otf', url: 'http://10.11.0.10/resources/veg/fonts/MyriadPro/MyriadPro-Black.otf'}
+  - { name: 'MyriadPRO-BLACK (OpenType)', file: 'MyriadPro-Black.otf', url: 'http://10.11.0.10/resources/veg/fonts/MyriadPro/MyriadPro-Black.otf' }
