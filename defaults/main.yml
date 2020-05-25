@@ -1,0 +1,12 @@
+ 
+---
+# tasks: sys-custom-fonts
+#
+# Author: Luc Rutten
+# File: defaults/main.yml
+#
+# Description:
+#   Deploy custom fonts.
+
+fonts_repository:
+  - { name: '', url: ''}
