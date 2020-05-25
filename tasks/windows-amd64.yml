@@ -7,10 +7,10 @@
 # Description:
 #   Deploy fonts.
 
-- name: "Download fonts to local {{ SystemRoot }}/Fonts/{{ item.name }}"
+- name: "Download fonts to local {{ ansible_env.SystemRoot }}/Fonts/{{ item.name }}"
   win_get_url:
     url: "{{ item.url }}"
-    dest: "{{ SystemRoot }}/Fonts/{{ item.file }}"
+    dest: "{{ ansible_env.SystemRoot }}/Fonts/{{ item.file }}"
   register: new_fonts
   with_items: "{{ fonts_repository }}"
 
