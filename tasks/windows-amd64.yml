@@ -9,19 +9,27 @@
 
 - name: "Create local Ansible repository"
   win_file:
-    path: "{{ ansible_env.ProgramFiles }}/Ansible/resource/fonts/just/"
+    path: "{{ item }}"
     state: directory
+  with_items:
+    - "{{ ansible_env.ProgramFiles }}/Ansible/resource/fonts/"
+
+- name: "Download fonts to local repository"
+  win_get_url:
+    url: "{{ item.url }}"
+    dest: "{{ ansible_env.ProgramFiles }}/Ansible/resource/fonts/{{ item.name }}"
+   with_items: "{{ fonts_repository }}"
 
 - name: "Download template to local repository"
   win_template:
     src: install_fonts.vbs.j2
-    dest: '{{ ansible_env.ProgramFiles }}/Ansible/resource/fonts/just/install_fonts.vbs'
+    dest: '{{ ansible_env.ProgramFiles }}/Ansible/resource/fonts/install_fonts.vbs'
     force: no
 
-- name: "Download font to local repository"
-  win_get_url:
-    url: "http://{{ repository_server }}/resource/fonts/just/JUST-font%202018.otf"
-    dest: '{{ ansible_env.ProgramFiles }}/Ansible/resource/fonts/just/JUST-font.otf'
-    force: no
-  notify:
-    - install just-font
+#- name: "Download font to local repository"
+#  win_get_url:
+#    url: "http://{{ repository_server }}/resource/fonts/just/JUST-font%202018.otf"
+#    dest: '{{ ansible_env.ProgramFiles }}/Ansible/resource/fonts/just/JUST-font.otf'
+#    force: no
+#  notify:
+#    - install just-font
