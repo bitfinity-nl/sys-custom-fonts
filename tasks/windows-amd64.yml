@@ -13,15 +13,3 @@
     dest: "{{ SystemRoot }}/Fonts/{{ item.name }}"
   register: new_fonts
   with_items: "{{ fonts_repository }}"
-
-- name: "Display new fonts"
-  debug:
-    msg: "{{ item.dest }}"
-  when: item.changed
-  with_items: "{{ new_fonts.results }}"
-  
-- name: "Install custom fonts"
-  #win_command: cscript.exe //nologo //B "{{ ansible_env.ProgramFiles }}/ansible/custom/fonts/install_fonts.vbs {{ item.dest }}"
-  win_command: cscript.exe //nologo //B "{{ ansible_env.ProgramFiles }}/ansible/custom/fonts/install_fonts.vbs {{ ansible_env.ProgramFiles }}/ansible/custom/fonts/MyriadPro-Black.otf"
-#  when: item.changed
-  with_items: "{{ new_fonts.results }}"
