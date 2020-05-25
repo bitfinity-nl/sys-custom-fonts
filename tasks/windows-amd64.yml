@@ -18,14 +18,13 @@
   win_get_url:
     url: "{{ item.url }}"
     dest: "{{ ansible_env.ProgramFiles }}/ansible/resource/fonts/{{ item.name }}"
-   with_items: 
-    - "{{ fonts_repository }}"
+   with_items: "{{ fonts }}"
 
-- name: "Download template to local repository"
-  win_template:
-    src: install_fonts.vbs.j2
-    dest: '{{ ansible_env.ProgramFiles }}/ansible/resource/fonts/install_fonts.vbs'
-    force: no
+#- name: "Download template to local repository"
+#  win_template:
+#    src: install_fonts.vbs.j2
+#    dest: '{{ ansible_env.ProgramFiles }}/ansible/resource/fonts/install_fonts.vbs'
+#    force: no
 
 #- name: "Download font to local repository"
 #  win_get_url:
