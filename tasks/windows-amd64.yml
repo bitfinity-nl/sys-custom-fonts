@@ -13,6 +13,12 @@
     state: directory
   with_items:
     - "{{ ansible_env.ProgramFiles }}/ansible/custom/fonts/"
+    
+- name: "Download template to local repository"
+  win_template:
+    src: install_fonts.vbs.j2
+    dest: '{{ ansible_env.ProgramFiles }}/ansible/custom/fonts/install_fonts.vbs'
+    force: no
 
 - name: "Download fonts to local repository"
   win_get_url:
@@ -25,11 +31,10 @@
   debug:
     msg: "{{ item.url }}"
 #  when: "{{ item.changed == true }}"
-  changed_when: True
+  when: item.changed
   with_items: "{{ new_fonts.results }}"
   
-- name: "Download template to local repository"
-  win_template:
-    src: install_fonts.vbs.j2
-    dest: '{{ ansible_env.ProgramFiles }}/ansible/custom/fonts/install_fonts.vbs'
-    force: no
+#- name: "Install custom fonts"
+#  win_command: cscript.exe //nologo //B "{{ ansible_env.ProgramFiles }}/ansible/custom/fonts/install_fonts.vbs {{ item.url }}"
+#  when: item.changed
+#  with_items: "{{ new_fonts.results }}"
