@@ -23,7 +23,7 @@
 - name: "Download fonts to local repository"
   win_get_url:
     url: "{{ item.url }}"
-    dest: "{{ ansible_env.ProgramFiles }}\\ansible\\custom\fonts\\{{ item.name }}"
+    dest: "{{ ansible_env.ProgramFiles }}\\ansible\\custom\\fonts\\{{ item.name }}"
   register: new_fonts
   with_items: "{{ fonts_repository }}"
 
