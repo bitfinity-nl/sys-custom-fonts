@@ -34,6 +34,6 @@
   with_items: "{{ new_fonts.results }}"
   
 - name: "Install custom fonts"
-  raw: cscript.exe //nologo //B "{{ ansible_env.ProgramFiles }}/ansible/custom/fonts/install_fonts.vbs {{ item.dest }}"
+  win_command: cscript.exe //nologo //B "'{{ ansible_env.ProgramFiles }}/ansible/custom/fonts/install_fonts.vbs' '{{ item.dest }}'"
 #  when: item.changed
   with_items: "{{ new_fonts.results }}"
