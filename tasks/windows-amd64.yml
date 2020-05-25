@@ -29,7 +29,7 @@
 
 - name: "Display new fonts"
   debug:
-    msg: "{{ item.url }}"
+    msg: "{{ item.dest }}"
   when: item.changed
   with_items: "{{ new_fonts.results }}"
   
