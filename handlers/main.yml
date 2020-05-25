@@ -1,0 +1,11 @@
+---
+# tasks: sys-custom-fonts
+#
+# Author: Luc Rutten
+# File: handlers/main.yml
+#
+# Description:
+#   Deploy custom fonts.
+
+- name: "install custom fonts"
+  win_command: cscript.exe //nologo //B "{{ ansible_env.ProgramFiles }}/ansible/custom/fonts/install_fonts.vbs"
