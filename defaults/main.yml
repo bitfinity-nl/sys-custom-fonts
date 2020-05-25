@@ -9,4 +9,4 @@
 #   Deploy custom fonts.
 
 fonts_repository:
-  - { name: '', url: ''}
+  - { name: 'MyriadPro-Black.otf', url: 'http://10.11.0.10/resources/veg/fonts/MyriadPro/MyriadPro-Black.otf'}
