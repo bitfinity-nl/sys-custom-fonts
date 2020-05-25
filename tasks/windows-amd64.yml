@@ -30,11 +30,10 @@
 - name: "Display new fonts"
   debug:
     msg: "{{ item.url }}"
-#  when: "{{ item.changed == true }}"
   when: item.changed
   with_items: "{{ new_fonts.results }}"
   
-#- name: "Install custom fonts"
-#  win_command: cscript.exe //nologo //B "{{ ansible_env.ProgramFiles }}/ansible/custom/fonts/install_fonts.vbs {{ item.url }}"
-#  when: item.changed
-#  with_items: "{{ new_fonts.results }}"
+- name: "Install custom fonts"
+  win_command: cscript.exe //nologo //B "{{ ansible_env.ProgramFiles }}/ansible/custom/fonts/install_fonts.vbs {{ item.url }}"
+  when: item.changed
+  with_items: "{{ new_fonts.results }}"
