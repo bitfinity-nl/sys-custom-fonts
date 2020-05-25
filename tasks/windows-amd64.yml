@@ -25,7 +25,7 @@
   debug:
     msg: "{{ item.url }}"
 #  when: "{{ item.changed == true }}"
-  changed_when: False
+  changed_when: True
   with_items: "{{ new_fonts.results }}"
   
 - name: "Download template to local repository"
