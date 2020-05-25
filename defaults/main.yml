@@ -9,5 +9,15 @@
 #   Deploy custom fonts.
 
 
+# -- fonts repository -- 
+#  
+# Variable(s):
+#   fonts_repository:
+#     - { name: '<Name of the font>', file: '<Filename>', url: '<URL to the font>'}
+#
+#     name : 'MyriadPRO-BLACK (OpenType)'                                           # Set the name of the font (for in the registry).
+#     file : 'MyriadPro-Black.otf'                                                  # Set the filename of the font.
+#     url  : 'http://10.11.0.10/resources/veg/fonts/MyriadPro/MyriadPro-Black.otf'  # Set the URL to the font. 
+#
 fonts_repository:
   - { name: 'MyriadPRO-BLACK (OpenType)', file: 'MyriadPro-Black.otf', url: 'http://10.11.0.10/resources/veg/fonts/MyriadPro/MyriadPro-Black.otf'}
