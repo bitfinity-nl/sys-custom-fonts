@@ -1,6 +1,5 @@
- 
 ---
-# tasks: Install Just-font
+# tasks: sys-fonts
 #
 # Author: Luc Rutten
 # File: tasks/main.yml
