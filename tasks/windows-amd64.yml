@@ -23,7 +23,8 @@
 
 - name: "Display new fonts"
   debug:
-    msg: "{{ item }}"
+    msg: "{{ item.url }}"
+  when: "{{item.changed == true}}" 
   with_items: "{{ new_fonts.results }}"
   
 - name: "Download template to local repository"
