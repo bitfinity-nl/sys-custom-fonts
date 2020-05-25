@@ -10,6 +10,14 @@
 - name: "Download fonts to local {{ SystemRoot }}/Fonts/{{ item.name }}"
   win_get_url:
     url: "{{ item.url }}"
-    dest: "{{ SystemRoot }}/Fonts/{{ item.name }}"
+    dest: "{{ SystemRoot }}/Fonts/{{ item.file }}"
   register: new_fonts
+  with_items: "{{ fonts_repository }}"
+
+- name: "Register Font in Windows registry"
+  win_regedit:
+    path: HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Fonts
+    name: "{{ item.name }}"
+    data: "{{ item.file }}"
+    type: string
   with_items: "{{ fonts_repository }}"
