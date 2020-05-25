@@ -18,8 +18,8 @@
   win_get_url:
     url: "{{ item.url }}"
 #    dest: "{{ ansible_env.ProgramFiles }}/ansible/resource/fonts/{{ item.name }}"
-    dest: "C:/Program Files/ansible/resource/fonts/{{ item.name }}"
-   with_items: "{{ fonts }}"
+    dest: "{{ ansible_env.ProgramFiles }}/ansible/resource/fonts/{{ item.name }}"
+   with_items: "{{ fonts_repository }}"
 
 #- name: "Download template to local repository"
 #  win_template:
