@@ -1,0 +1,27 @@
+---
+# tasks: sys-fonts
+#
+# Author: Luc Rutten
+# File: tasks/main.yml
+#
+# Description:
+#   Deploy fonts.
+
+- name: "Create local Ansible repository"
+  win_file:
+    path: "{{ ansible_env.ProgramFiles }}/Ansible/resource/fonts/just/"
+    state: directory
+
+- name: "Download template to local repository"
+  win_template:
+    src: install_fonts.vbs.j2
+    dest: '{{ ansible_env.ProgramFiles }}/Ansible/resource/fonts/just/install_fonts.vbs'
+    force: no
+
+- name: "Download font to local repository"
+  win_get_url:
+    url: "http://{{ repository_server }}/resource/fonts/just/JUST-font%202018.otf"
+    dest: '{{ ansible_env.ProgramFiles }}/Ansible/resource/fonts/just/JUST-font.otf'
+    force: no
+  notify:
+    - install just-font
