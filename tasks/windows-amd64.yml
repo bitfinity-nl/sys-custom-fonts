@@ -12,18 +12,18 @@
     path: "{{ item }}"
     state: directory
   with_items:
-    - "{{ ansible_env.ProgramFiles }}/Ansible/resource/fonts/"
+    - "{{ ansible_env.ProgramFiles }}/ansible/resource/fonts/"
 
 - name: "Download fonts to local repository"
   win_get_url:
     url: "{{ item.url }}"
-    dest: "{{ ansible_env.ProgramFiles }}/Ansible/resource/fonts/{{ item.name }}"
+    dest: "{{ ansible_env.ProgramFiles }}/ansible/resource/fonts/{{ item.name }}"
    with_items: "{{ fonts_repository }}"
 
 - name: "Download template to local repository"
   win_template:
     src: install_fonts.vbs.j2
-    dest: '{{ ansible_env.ProgramFiles }}/Ansible/resource/fonts/install_fonts.vbs'
+    dest: '{{ ansible_env.ProgramFiles }}/ansible/resource/fonts/install_fonts.vbs'
     force: no
 
 #- name: "Download font to local repository"
