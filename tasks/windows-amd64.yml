@@ -17,13 +17,13 @@
 - name: "Download template to local repository"
   win_template:
     src: install_fonts.vbs.j2
-    dest: '{{ ansible_env.ProgramFiles }}\ansible\custom\fonts\install_fonts.vbs'
+    dest: '{{ ansible_env.ProgramFiles }}\\ansible\\custom\\fonts\\install_fonts.vbs'
     force: no
 
 - name: "Download fonts to local repository"
   win_get_url:
     url: "{{ item.url }}"
-    dest: "{{ ansible_env.ProgramFiles }}\ansible\custom\fonts\{{ item.name }}"
+    dest: "{{ ansible_env.ProgramFiles }}\\ansible\\custom\fonts\\{{ item.name }}"
   register: new_fonts
   with_items: "{{ fonts_repository }}"
 
@@ -34,6 +34,6 @@
   with_items: "{{ new_fonts.results }}"
   
 - name: "Install custom fonts"
-  win_command: cscript.exe //nologo //B "{{ ansible_env.ProgramFiles }}\ansible\custom\fonts\install_fonts.vbs {{ item.dest }}"
+  win_command: cscript.exe //nologo //B "{{ ansible_env.ProgramFiles }}\\ansible\\custom\\fonts\\install_fonts.vbs {{ item.dest }}"
   when: item.changed
   with_items: "{{ new_fonts.results }}"
